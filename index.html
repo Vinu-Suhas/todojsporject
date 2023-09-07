@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>To do app</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="crossorigin="anonymous"referrerpolicy="no-referrer"
+  />
+    <style>
+
+    </style>
 </head>
 <body>
-    <h1>Task List    </h1>
-    <div class="container">
-        <h1>Tasks<span style="font-weight:500;"> list</span> </h1>
-        <p class="add_item" >Add item</span>
+    <div class="parent_container" id="heading_container">
+        <h1>Tasks List</h1>
+        <button onclick="showAddTask()" class="red_class fa-solid fa-plus">Add List</button>
+    </div>
+    <div class="box hide" id="addtaskpopup">
+        <!-- add new task conatiner -->
+        <h3>Add new list</h3>
+        <input type="text" id="card_heading_Data">
+        <br><br>
+        <div class="button_container">
+            <button onclick="addCard()" class="red_class">Add</button>
+            <button onclick="hideAddTask()" class="red_class">Close</button>
         </div>
-        <div class="card">         </div>
-        <div class="card_container">
-            
-        </div>
-<div class="hide" id="addtaskpopup">
-    <h3> Task name</h3>
-    <input type="text" id="cardname">
-    
-</div>
 
+    </div>
 
+    <div id="card_container">
+
+    </div>
+    <!-- add task pop -->
+    <div id="addItempopup" class="box hide">
+
+    </div>
+    <!-- <div id="subitem_data"  class="box hide">
+        <input type="text" id="item_list_Data">
+        <button onclick="addCard()">Add</button>
+        <button onclick="hideAddTask()">Close</button>
+    </div> -->
+
+    <script src="./new_script.js"></script>
 </body>
 </html>
