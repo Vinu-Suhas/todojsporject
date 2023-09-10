@@ -17,8 +17,14 @@
 </head>
 <body>
     <div class="parent_container" id="heading_container">
+        
         <h1>Tasks List</h1>
         <button onclick="showAddTask()" class="red_class fa-solid fa-plus">Add List</button>
+        </div>
+    <div class="parent_container hide" id="secondaryContainer">
+        <p onclick="restorecards()">Back <i class="fa-solid fa-circle-arrow-left"></i></p>
+        <h2 id="secondaryContainer_title"></h2>
+    </div>
     </div>
     <div class="box hide" id="addtaskpopup">
         <!-- add new task conatiner -->

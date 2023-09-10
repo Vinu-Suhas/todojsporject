@@ -5,6 +5,8 @@ var sub_item_popup=document.getElementById('subitem_data')
 let additempopup_container = document.getElementById("addItempopup-container")
 var heading_container=document.getElementById('heading_container')
 var no_items=document.getElementById('no_items')
+var secondaryContainer=document.getElementById('secondaryContainer')
+var secondaryContainer_title=document.getElementById('secondaryContainer_title')
 function showAddTask(){
     addtaskpopup.classList.remove('hide')
     cardContainer.classList.add('blur')
@@ -27,7 +29,17 @@ function hideAddTask(){
     no_items.classList.add('hide')
     // to make the input field empty
 }
+function restorecards(){
+    heading_container.classList.remove('hide')
+    for(let i=0;i<cardContainer.childElementCount;i++){
 
+            document.getElementsByClassName('card')[i].classList.remove('hide')
+        
+    }
+    secondaryContainer.classList.add('hide')
+  
+    secondaryContainer_title.innerText=''
+}
 
 
 function addCard(){
@@ -41,8 +53,29 @@ function addCard(){
     var removeButton=document.createElement("button")
     var item_CardContainer=document.createElement("div")
     item_CardContainer.classList.add("item_CardContainer")
-    if(heading_container.value=='') alert("Please enter the value")
+
+
+    if(card_heading_Data.value ==='') {
+        alert("Please enter the value")
+        return undefined
+    }
     heading.innerText=card_heading_Data.value
+    heading.onclick=function(){
+        //single card view
+        secondaryContainer.classList.remove('hide')
+        for(let i=0;i<document.getElementById("card_container").childElementCount;i++){
+            if(document.getElementsByClassName('card')[i]==card)        
+            {
+                console.log("card detected")
+            }
+            else {
+                document.getElementsByClassName('card')[i].classList.add('hide')
+            }
+        }
+
+        heading_container.classList.add('hide')
+        secondaryContainer_title.innerText=card_heading_Data.value
+    }
     no_items.classList.remove('blur')
     hideAddTask()
     // addButton.innerText=" +"
@@ -129,28 +162,32 @@ function addCard(){
         adding_button.innerText="Add "
         removing_button.innerText="Close"
 
+
         adding_button.addEventListener('click',()=>{
             console.log("adding sublist ")
             console.log(input_item_data.value)
-            let item_list=document.createElement('p')
-            let mark_done=document.createElement('button')
-            mark_done.innerText="Mark Done"
-            mark_done.classList.add('red_class')
-            mark_done.onclick=function (){
-                item_list.style.textDecoration="line-through"
-                //to strike an item
-                mark_done.remove()
+            if(input_item_data.value!=='')
+                {
+                let item_list=document.createElement('p')
+                let mark_done=document.createElement('button')
+                mark_done.innerText="Mark Done"
+                mark_done.classList.add('red_class')
+                mark_done.onclick=function (){
+                    item_list.style.textDecoration="line-through"
+                    //to strike an item
+                    mark_done.remove()
 
+                }
+                item_list.innerText=input_item_data.value
+                item_list.append(mark_done)
+                item_CardContainer.append(item_list)
+
+
+                cardContainer.classList.remove('blur')
+                heading_container.classList.remove('blur')
+                additempopup.remove()
+                additempopup_container.classList.add('hide')
             }
-            item_list.innerText=input_item_data.value
-            item_list.append(mark_done)
-            item_CardContainer.append(item_list)
-
-
-            cardContainer.classList.remove('blur')
-            heading_container.classList.remove('blur')
-            additempopup.remove()
-            additempopup_container.classList.add('hide')
 
 
         })

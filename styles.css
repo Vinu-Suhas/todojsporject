@@ -36,6 +36,9 @@ input{
 }
 .card:hover{
     box-shadow: 4px 4px 20px red;
+    /* transform: scale(10px,10px); */
+    width: 340px;
+    transition:0.3s
 }
 #addItempopup{
     align-items: center;
