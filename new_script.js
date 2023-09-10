@@ -28,6 +28,8 @@ function hideAddTask(){
     // to make the input field empty
 }
 
+
+
 function addCard(){
     //adding pop up card details 
     var card=document.createElement("div")
@@ -37,6 +39,8 @@ function addCard(){
     var hr=document.createElement("hr")
     var addButton=document.createElement("button")
     var removeButton=document.createElement("button")
+    var item_CardContainer=document.createElement("div")
+    item_CardContainer.classList.add("item_CardContainer")
     if(heading_container.value=='') alert("Please enter the value")
     heading.innerText=card_heading_Data.value
     no_items.classList.remove('blur')
@@ -83,6 +87,7 @@ function addCard(){
     cardContainer.append(card)
     card.append(heading)
     card.append(hr)
+    card.append(item_CardContainer)
     card.append(addButton)
     card.append(removeButton)
     // card_heading_Data.value=""  // to make the input field empty
@@ -97,11 +102,14 @@ function addCard(){
         cardContainer.classList.add('blur')
         heading_container.classList.add('blur')
         console.log("add inner button clikced")
+
         let itemPopupheading=document.createElement('h3')
         let itemName=document.createElement('p')
         let adding_button=document.createElement('button')
         let removing_button=document.createElement('button')
         let input_item_data=document.createElement('input')
+
+        
         input_item_data.style.display="block"
         input_item_data.placeholder="Enter the list "
         input_item_data.style.textAlign="center"
@@ -122,13 +130,37 @@ function addCard(){
         removing_button.innerText="Close"
 
         adding_button.addEventListener('click',()=>{
-            
+            console.log("adding sublist ")
+            console.log(input_item_data.value)
+            let item_list=document.createElement('p')
+            let mark_done=document.createElement('button')
+            mark_done.innerText="Mark Done"
+            mark_done.classList.add('red_class')
+            mark_done.onclick=function (){
+                item_list.style.textDecoration="line-through"
+                //to strike an item
+                mark_done.remove()
+
+            }
+            item_list.innerText=input_item_data.value
+            item_list.append(mark_done)
+            item_CardContainer.append(item_list)
+
+
+            cardContainer.classList.remove('blur')
+            heading_container.classList.remove('blur')
+            additempopup.remove()
+            additempopup_container.classList.add('hide')
+
+
         })
         removing_button.addEventListener('click',()=>{
             cardContainer.classList.remove('blur')
             heading_container.classList.remove('blur')
             // additempopup.classList.add('hide')
-            additempopup_container.remove(additempopup)
+            // additempopup_container.remove(additempopup)
+            additempopup.remove()
+            additempopup_container.classList.add('hide')
         })
 
     })

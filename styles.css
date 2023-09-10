@@ -96,3 +96,9 @@ button.red_class{
 .blur{
     filter: blur(2px);
 }
+
+.item_CardContainer{
+    align-items: center;
+    text-align: center;
+    align-content: center;
+}
