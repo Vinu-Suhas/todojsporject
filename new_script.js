@@ -72,9 +72,9 @@ function addCard(){
                 document.getElementsByClassName('card')[i].classList.add('hide')
             }
         }
-
+        console.log("card heading vallue ",heading.innerText)
         heading_container.classList.add('hide')
-        secondaryContainer_title.innerText=card_heading_Data.value
+        secondaryContainer_title.innerText=heading.innerText
     }
     no_items.classList.remove('blur')
     hideAddTask()
